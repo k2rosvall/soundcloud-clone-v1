@@ -6,6 +6,10 @@ services:
 stages:
   - test
 
+cache:
+  paths:
+    - vendor/ruby
+
 variables:
   RAILS_ENV: 'test'
   DB_HOST: postgres
@@ -13,6 +17,8 @@ variables:
   POSTGRES_USER: karlarosas
 
 before_script:
+  - bundle config set clean 'true'
+  - bundle config set path 'vendor'
   - bundle install
 
 rubocop:

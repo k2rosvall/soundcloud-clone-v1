@@ -1,13 +1,35 @@
 image: "registry.michelada.io/michelada/dockerfiles/ci/rails:3.0.2"
 
+services:
+  - postgres
 
 stages:
-  - lint
+  - test
 
+cache:
+  paths:
+    - vendor/ruby
+
+variables:
+  RAILS_ENV: 'test'
+  DB_HOST: postgres
+  POSTGRES_PASSWORD: soundcloud2021
+  POSTGRES_USER: karlarosas
+
+before_script:
+  - bundle config set clean 'true'
+  - bundle config set path 'vendor'
+  - bundle install
 
 rubocop:
-  stage: lint
+  stage: test
   script:
     - yarn install
-    - bundle install
     - bundle exec rubocop
+
+test:
+  stage: test
+  script:
+    - yarn install
+    - bundle exec rake db:create db:schema:load
+    - bundle exec rake test

@@ -1,0 +1,13 @@
+image: "registry.michelada.io/michelada/dockerfiles/ci/rails:3.0.2"
+
+
+stages:
+  - lint
+
+
+rubocop:
+  stage: lint
+  script:
+    - yarn install
+    - bundle install
+    - bundle exec rubocop

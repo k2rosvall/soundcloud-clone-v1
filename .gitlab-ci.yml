@@ -48,7 +48,7 @@ staging_deployment:
   stage: deployment
   script:
     - gem install dpl
-    - dpl --provider=heroku --app $HEROKU_PRODUCTION_APP_NAME --api_key $HEROKU_API_KEY
+    - dpl --provider=heroku --app $HEROKU_STAGING_APP_NAME --api_key $HEROKU_API_KEY
   only:
     refs:
       - development

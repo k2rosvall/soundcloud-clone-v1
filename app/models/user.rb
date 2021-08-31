@@ -6,4 +6,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :first_name, :last_name, presence: true
+
+  before_create :set_default_values
+
+  private
+
+  def set_default_values
+    self.display_name = "user-#{SecureRandom.hex(10)}"
+    self.bio = ''
+    self.followers = 0
+    self.following = 0
+    self.tracks = 0
+    byebug
+  end
 end

@@ -17,6 +17,5 @@ class User < ApplicationRecord
     self.followers = 0
     self.following = 0
     self.tracks = 0
-    byebug
   end
 end

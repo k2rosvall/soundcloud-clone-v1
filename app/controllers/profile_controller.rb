@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProfileController < ApplicationController
   def show
     @user = User.find_by(display_name: params[:display_name])

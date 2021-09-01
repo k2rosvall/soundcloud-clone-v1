@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     post 'users/sign_up', to: 'devise/registrations#create'
   end
   root to: 'home#index'
+
+  get '/:display_name', to: 'profile#show', as: 'profile'
 end

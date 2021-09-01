@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20_210_831_183_430) do
     t.string 'last_name'
     t.string 'display_name'
     t.text 'bio'
-    t.integer 'followers'
-    t.integer 'following'
-    t.integer 'tracks'
+    t.integer 'followers_count', default: 0
+    t.integer 'following_count', default: 0
+    t.integer 'tracks_count', default: 0
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end

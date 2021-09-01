@@ -17,20 +17,20 @@
     </div>
     <div class="col-2">
       <label>Followers</label><br>
-      <%= @user.followers %>
+      <%= @user.followers_count %>
     </div>
     <div class="col-2">
       <label>Following</label><br>
-      <%= @user.following %>
+      <%= @user.following_count %>
     </div>
     <div class="col-2">
       <label>Tracks</label><br>
-      <%= @user.tracks %>
+      <%= @user.tracks_count %>
     </div>
   </div>
   <div class="tracks">
     <h2>Tracks</h2>
-    <% if @user.tracks.zero? %>
+    <% if @user.tracks_count.zero? %>
       <p>Seems a little quiet over here.</p>
       <button class="btn btn-accent">Upload now</button>
     <% end %>

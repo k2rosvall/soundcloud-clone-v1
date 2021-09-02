@@ -19,10 +19,19 @@
   </div>
 
   <div class="field form-group w-25">
+    <%= f.label :profile_url %>
+    <%= f.text_field :profile_url, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group w-25">
+    <%= f.label :location %>
+    <%= f.text_field :location, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group w-25">
     <%= f.label :bio %>
     <%= f.text_field :bio, autofocus: true, class: 'form-control' %>
   </div>
-
 
   <div class="field form-group w-25">
     <%= f.label :email %><br />
@@ -61,4 +70,4 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to 'Go Back', profile_path(current_user.display_name), class: 'nav-link' %>
+<%= link_to 'Go Back', profile_path(current_user.profile_url), class: 'nav-link' %>

@@ -1,0 +1,44 @@
+<h1>Your profile</h1>
+<div class="container">
+  <div class="row">
+    <div class="profile-photo col-2"></div>
+    <div class="col">
+      <label>Display Name:</label><br>
+      <%= @user.display_name%>
+    </div>
+    <div class="col">
+      <%= link_to 'Edit Profile', edit_user_registration_path, class: 'nav-link' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <br><label>Bio</label><br>
+      <%= @user.bio %>
+    </div>
+    <div class="col-2">
+      <label>Followers</label><br>
+      <%= @user.followers_count %>
+    </div>
+    <div class="col-2">
+      <label>Following</label><br>
+      <%= @user.following_count %>
+    </div>
+    <div class="col-2">
+      <label>Tracks</label><br>
+      <%= @user.tracks_count %>
+    </div>
+  </div>
+  <div class="tracks">
+    <h2>Tracks</h2>
+    <% if @user.tracks_count.zero? %>
+      <p>Seems a little quiet over here.</p>
+      <button class="btn btn-accent">Upload now</button>
+    <% end %>
+  </div>
+</div>
+  
+ 
+  
+
+  
+  

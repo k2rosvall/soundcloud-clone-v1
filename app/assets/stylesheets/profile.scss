@@ -1,0 +1,22 @@
+// Place all the styles related to the Profile controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.profile-photo {
+  border-radius: 50%;
+  background-color: gray;
+  height: 150px;
+  width: 150px;
+}
+
+.tracks {
+  margin-top: 50px;
+}
+
+.btn-accent {
+  background-color:#ef5330;
+  color: white
+}
+
+.row {
+  align-items: center;
+}

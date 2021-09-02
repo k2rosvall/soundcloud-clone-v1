@@ -4,6 +4,11 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field form-group w-25">
+    <label>Profile picture</label>
+    <%= f.file_field :avatar, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group w-25">
     <%= f.label :first_name %>
     <%= f.text_field :first_name, autofocus: true, class: 'form-control'%>
   </div>

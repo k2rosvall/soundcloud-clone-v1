@@ -43,3 +43,12 @@ Layout/LineLength:
 Metrics/BlockLength:
   Exclude:
     - '*/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/20210902163734_create_active_storage_tables.active_storage.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/20210902163734_create_active_storage_tables.active_storage.rb
+    - bin/bundle

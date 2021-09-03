@@ -1,13 +1,33 @@
 <h1>Your profile</h1>
 <div class="container">
   <div class="row">
-    <div class="profile-photo col-2"></div>
+    <div class="col-2">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, class: 'profile-photo' %>
+      <% else %>
+        <%= image_tag "pfp.jpg", class: "profile-photo" %>
+      <% end %>
+    </div>
     <div class="col">
       <label>Display Name:</label><br>
       <%= @user.display_name%>
     </div>
     <div class="col">
       <%= link_to 'Edit Profile', edit_user_registration_path, class: 'nav-link' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label>Profile URL</label><br>
+      <p>soundcloud.com/<%= @user.profile_url%></p>
+    </div>
+    <div class="col">
+      <label>City</label><br>
+      <%= @user.city %>
+    </div>
+     <div class="col">
+      <label>Country</label><br>
+      <%= @user.country %>
     </div>
   </div>
   <div class="row">

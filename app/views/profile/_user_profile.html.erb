@@ -13,6 +13,9 @@
         <h2><%= @user.display_name%></h2><br>
         <%= "#{@user.first_name} #{@user.last_name}" %>
       </div>
+      <div class="col">
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: 'nav-link' %>
+      </div>
     </div>
   </header>
   <div class="row">

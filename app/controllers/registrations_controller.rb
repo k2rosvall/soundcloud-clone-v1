@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class RegistrationsController < Devise::RegistrationsController
-  
   protected
 
   def after_update_path_for(resource)
     profile_path(resource.profile_id)
   end
-  
+
   private
 
   def sign_up_params

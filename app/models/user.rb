@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg']
+
   private
 
   def set_profile_id

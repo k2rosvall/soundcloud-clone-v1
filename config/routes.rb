@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   end
   root to: 'home#index'
 
-  get '/:profile_url', to: 'profile#show', as: 'profile'
+  get '/:profile_id', to: 'profile#show', as: 'profile'
 end

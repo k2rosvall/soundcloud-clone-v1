@@ -7,13 +7,13 @@
 one:
   first_name: 'Jane'
   last_name: 'Doe'
-  profile_url: 'user1'
+  profile_id: 'user1'
   email: 'user1@example.com'
   encrypted_password: <%= Devise::Encryptor.digest(User, "secret") %>
 
 two: 
   first_name: 'John'
   last_name: 'Doe'
-  profile_url: 'user2'
+  profile_id: 'user2'
   email: 'user2@example.com'
   encrypted_password: <%= Devise::Encryptor.digest(User, "secret") %>

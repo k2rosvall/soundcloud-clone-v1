@@ -1,61 +1,8 @@
-<h1>Your profile</h1>
-<div class="container">
-  <div class="row">
-    <div class="col-2">
-      <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar, class: 'profile-photo' %>
-      <% else %>
-        <%= image_tag "pfp.jpg", class: "profile-photo" %>
-      <% end %>
-    </div>
-    <div class="col">
-      <label>Display Name:</label><br>
-      <%= @user.display_name%>
-    </div>
-    <div class="col">
-      <%= link_to 'Edit Profile', edit_user_registration_path, class: 'nav-link' %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <label>Profile URL</label><br>
-      <p>soundcloud.com/<%= @user.profile_id%></p>
-    </div>
-    <div class="col">
-      <label>City</label><br>
-      <%= @user.city %>
-    </div>
-     <div class="col">
-      <label>Country</label><br>
-      <%= @user.country %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <br><label>Bio</label><br>
-      <%= @user.bio %>
-    </div>
-    <div class="col-2">
-      <label>Followers</label><br>
-      <%= @user.followers_count %>
-    </div>
-    <div class="col-2">
-      <label>Following</label><br>
-      <%= @user.following_count %>
-    </div>
-    <div class="col-2">
-      <label>Tracks</label><br>
-      <%= @user.tracks_count %>
-    </div>
-  </div>
-  <div class="tracks">
-    <h2>Tracks</h2>
-    <% if @user.tracks_count.zero? %>
-      <p>Seems a little quiet over here.</p>
-      <button class="btn btn-accent">Upload now</button>
-    <% end %>
-  </div>
-</div>
+<% if current_user.nil? || current_user.profile_id != params[:profile_id]%>
+  <%= render 'profile/visited_user_profile', locals: {user: @user}%>
+<% else %>
+  <%= render 'profile/user_profile', locals: {user: @user} %>
+<% end %>
   
  
   

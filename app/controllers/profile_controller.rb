@@ -9,7 +9,7 @@ class ProfileController < ApplicationController
 
   def find_user
     user = User.find_by(profile_id: params[:profile_id])
-    redirect_to root_url, notice: "User doesn't exist" if user.nil?
+    redirect_to root_url, notice: "The user #{params[:profile_id]} cannot be found" if user.nil?
 
     user
   end

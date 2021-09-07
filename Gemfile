@@ -63,3 +63,6 @@ gem 'devise'
 
 # Amazon S3 service
 gem 'aws-sdk-s3', require: false
+
+# Active storage validations
+gem 'active_storage_validations'

@@ -52,9 +52,23 @@
   </div>
   <div class="tracks">
     <h2>Tracks</h2>
-    <% if @user.tracks_count.zero? %>
+    <% if @user.tracks.nil? %>
       <p>Seems a little quiet over here.</p>
       <button class="btn btn-accent">Upload now</button>
+    <% else %>
+      <% @user.tracks.each do |track|%>
+            <% if track.cover_image.attached? %>
+              <%= image_tag track.cover_image, class: 'profile-photo' %>
+            <% else %>
+              <%= image_tag "pfp.jpg", class: "profile-photo" %>
+            <% end %>
+            <%= @user.display_name%><br>
+            <%= track.title%><br>
+            <audio controls>
+              <source src= <%= track.track_file %> type="audio/mp3">
+            </audio>
+            <br>
+      <% end %>
     <% end %>
   </div>
 </div>

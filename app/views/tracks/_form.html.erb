@@ -1,0 +1,41 @@
+<%= form_with(model: track) do |f| %>
+  <% if track.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(track.errors.count, "error") %> prohibited this track from being saved:</h2>
+
+      <ul>
+        <% track.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <%= f.file_field :track_file, class: 'form-control' %>
+
+   <%= f.label 'Cover Image' %>
+   <%= f.file_field :cover_image, class: 'form-control' %>
+
+  <div class="field form-group w-25">
+    <%= f.label 'Title' %>
+    <%= f.text_field :title, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group w-25">
+    <%= f.label 'Genre' %>
+    <%= f.text_field :genre, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group w-25">
+    <%= f.label 'Description' %>
+    <%= f.text_field :description, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group w-25">
+    <%= f.number_field :user_id, value: current_user.id , autofocus: true, class: 'form-control', type: :hidden %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

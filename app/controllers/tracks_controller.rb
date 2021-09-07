@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TracksController < ApplicationController
-  before_action :set_track, only: %i[ show edit update destroy ]
+  before_action :set_track, only: %i[show edit update destroy]
 
   # GET /tracks or /tracks.json
   def index
@@ -7,8 +9,7 @@ class TracksController < ApplicationController
   end
 
   # GET /tracks/1 or /tracks/1.json
-  def show
-  end
+  def show; end
 
   # GET /tracks/new
   def new
@@ -16,8 +17,7 @@ class TracksController < ApplicationController
   end
 
   # GET /tracks/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /tracks or /tracks.json
   def create
@@ -25,7 +25,7 @@ class TracksController < ApplicationController
 
     respond_to do |format|
       if @track.save
-        format.html { redirect_to profile_path(current_user.profile_id), notice: "Track was successfully created." }
+        format.html { redirect_to profile_path(current_user.profile_id), notice: 'Track was successfully created.' }
         format.json { render :show, status: :created, location: @track }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class TracksController < ApplicationController
   def update
     respond_to do |format|
       if @track.update(track_params)
-        format.html { redirect_to @track, notice: "Track was successfully updated." }
+        format.html { redirect_to @track, notice: 'Track was successfully updated.' }
         format.json { render :show, status: :ok, location: @track }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,19 +51,20 @@ class TracksController < ApplicationController
   def destroy
     @track.destroy
     respond_to do |format|
-      format.html { redirect_to tracks_url, notice: "Track was successfully destroyed." }
+      format.html { redirect_to tracks_url, notice: 'Track was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_track
-      @track = Track.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def track_params
-      params.require(:track).permit(:track_file, :cover_image, :title, :genre, :description, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_track
+    @track = Track.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def track_params
+    params.require(:track).permit(:track_file, :cover_image, :title, :genre, :description, :user_id)
+  end
 end

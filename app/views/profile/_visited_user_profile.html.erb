@@ -34,8 +34,10 @@
     </div>
     <div class="tracks">
       <h2>Tracks</h2>
-      <% if @user.tracks_count.zero? %>
-        <p>This user hasn't upload any tracks</p>
-      <% end %>
+      <% if @user.tracks.length.zero? %>
+      <p>This is user hasn't upload any tracks. </p>
+    <% else %>
+      <%= render 'profile/user_tracks', locals: {user: @user}%>
+    <% end %>
     </div>
 </div>

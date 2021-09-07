@@ -25,7 +25,7 @@ class TracksController < ApplicationController
 
     respond_to do |format|
       if @track.save
-        format.html { redirect_to @track, notice: "Track was successfully created." }
+        format.html { redirect_to profile_path(current_user.profile_id), notice: "Track was successfully created." }
         format.json { render :show, status: :created, location: @track }
       else
         format.html { render :new, status: :unprocessable_entity }

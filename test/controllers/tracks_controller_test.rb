@@ -14,7 +14,7 @@ class TracksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get new' do 
+  test 'should get new' do
     sign_in users(:one)
     get new_track_url
     assert_response :success

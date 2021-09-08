@@ -27,7 +27,22 @@
 
   <div class="field form-group w-25">
     <%= f.label 'Genre' %>
-    <%= f.text_field :genre, autofocus: true, class: 'form-control' %>
+    <%= f.select :genre, options_for_select(
+      [['None', 'None'], ['Alternative Rock', 'Alternative Rock'], 
+      ['Ambient', 'Ambient'], ['Classical', 'Classical'], 
+      ['Country', 'Country'], ['Dance & EDM', 'Dance & EDM'], 
+      ['Dancehall', 'Dancehall'], ['Deep House', 'Deep House'], 
+      ['Disco', 'Disco'], ['Drum & Bass', 'Drum & Bass'], 
+      ['Dubstep', 'Dubstep'], ['Electronic', 'Electronic'],
+      ['Folk & Singer-Songwriter', 'Folk & Singer-Songwriter' ],
+      ['Hip-Hop & Rap', 'Hip-Hop & Rap'], ['House', 'House'],
+      ['Indie', 'Indie'], ['Jazz & Blues', 'Jazz & Blues'],
+      ['Latin', 'Latin'], ['Metal', 'Metal'], ['Piano', 'Piano'],
+      ['Pop', 'Pop'], ['R&B & Soul', 'R&B & Soul'], 
+      ['Reggae', 'Reggae'], ['Reggaeton', 'Reggaeton'],
+      ['Rock', 'Rock'], ['Soundtrack', 'Soundtrack'],
+      ['Techno', 'Techno'], ['Trance', 'Trance'], ['Trap', 'Trap'],
+      ['Triphop', 'Triphop'], ['World','World']],'None') %>
   </div>
 
   <div class="field form-group w-25">

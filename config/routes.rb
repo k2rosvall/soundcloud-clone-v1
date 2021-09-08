@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get '/:profile_id', to: 'profile#show', as: 'profile'
-  get '/users/:id/tracks', to: 'users#tracks', as: 'user_tracks'
 end

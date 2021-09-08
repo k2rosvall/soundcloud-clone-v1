@@ -9,7 +9,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
-  has_many :tracks
+  has_many :tracks, dependent: :destroy
 
   validates :first_name, :last_name, presence: true
   validates :profile_id, uniqueness: true, presence: true

@@ -52,7 +52,7 @@
   </div>
   <div class="tracks">
     <h2>Tracks</h2>
-    <% if @user.tracks.length.zero? %>
+    <% if @user.tracks_count.zero? %>
       <p>Seems a little quiet over here.</p>
       <%= link_to 'Upload', new_track_path, class: 'btn btn-accent' %>
     <% else %>

@@ -1,0 +1,60 @@
+<%= form_with(model: track) do |f| %>
+  <% if track.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(track.errors.count, "error") %> prohibited this track from being saved:</h2>
+
+      <ul>
+        <% track.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field form-group w-25">
+    <%= f.label 'Drag and drop or click to select your file' %>
+    <%= f.file_field :track_file, class:'form-control drag-and-drop'%>
+  </div>
+
+  <div class="field form-group w-25">
+    <%= f.label 'Cover Image' %>
+    <%= f.file_field :cover_image, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group w-25">
+    <%= f.label 'Title' %>
+    <%= f.text_field :title, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group w-25">
+    <%= f.label 'Genre' %>
+    <%= f.select :genre, options_for_select(
+      [['None', 'None'], ['Alternative Rock', 'Alternative Rock'], 
+      ['Ambient', 'Ambient'], ['Classical', 'Classical'], 
+      ['Country', 'Country'], ['Dance & EDM', 'Dance & EDM'], 
+      ['Dancehall', 'Dancehall'], ['Deep House', 'Deep House'], 
+      ['Disco', 'Disco'], ['Drum & Bass', 'Drum & Bass'], 
+      ['Dubstep', 'Dubstep'], ['Electronic', 'Electronic'],
+      ['Folk & Singer-Songwriter', 'Folk & Singer-Songwriter' ],
+      ['Hip-Hop & Rap', 'Hip-Hop & Rap'], ['House', 'House'],
+      ['Indie', 'Indie'], ['Jazz & Blues', 'Jazz & Blues'],
+      ['Latin', 'Latin'], ['Metal', 'Metal'], ['Piano', 'Piano'],
+      ['Pop', 'Pop'], ['R&B & Soul', 'R&B & Soul'], 
+      ['Reggae', 'Reggae'], ['Reggaeton', 'Reggaeton'],
+      ['Rock', 'Rock'], ['Soundtrack', 'Soundtrack'],
+      ['Techno', 'Techno'], ['Trance', 'Trance'], ['Trap', 'Trap'],
+      ['Triphop', 'Triphop'], ['World','World']],'None') %>
+  </div>
+
+  <div class="field form-group w-25">
+    <%= f.label 'Description' %>
+    <%= f.text_field :description, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group w-25">
+    <%= f.number_field :user_id, value: current_user.id , autofocus: true, class: 'form-control', type: :hidden %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

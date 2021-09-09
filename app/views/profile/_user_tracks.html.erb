@@ -1,11 +1,7 @@
 <% @user.tracks.each do |track|%>
   <div class="row tracklist-item">
     <div class="col-2">
-      <% if track.cover_image.attached? %>
-        <%= image_tag track.cover_image, class: 'cover-image' %>
-      <% else %>
-        <%= image_tag "track.jpg", class: 'cover-image' %>
-      <% end %>
+      <%= image_tag track.cover_image, class: 'cover-image' %>
     </div>
     <div class="col">
       <div class="row">

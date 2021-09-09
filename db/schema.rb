@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 20_210_907_173_215) do
   end
 
   create_table 'tracks', force: :cascade do |t|
-    t.string 'title'
-    t.string 'genre'
+    t.string 'title', null: false
+    t.string 'genre', null: false
     t.text 'description'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false

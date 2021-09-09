@@ -18,8 +18,6 @@
         <label class="track-genre"><%= track.genre%></label>
       </div>
     </div>
-    <audio controls>
-        <source src= <%= track.track_file %> type="audio/mpeg">
-    </audio>
+    <%= audio_tag url_for(track.track_file), controls: true, preload: "none" %>
   </div>
 <% end %>

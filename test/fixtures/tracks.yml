@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: 'My song'
+  genre: 'Pop'
+  description: 'a pop song'
+
+two:
+  title: 'My other song'
+  genre: 'Rock'
+  description: 'a rock song'

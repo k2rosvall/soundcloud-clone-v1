@@ -1,0 +1,23 @@
+<% @user.tracks.each do |track|%>
+  <div class="row tracklist-item">
+    <div class="col-2">
+      <%= image_tag track.cover_image, class: 'cover-image' %>
+    </div>
+    <div class="col">
+      <div class="row">
+        <% if @user.display_name.nil?%>
+          <label class="track-artist"><%= "#{@user.first_name} #{@user.last_name}"%></label>
+        <% else %>
+          <label class="track-artist"><%= @user.display_name%></label>
+        <% end %>
+      </div>
+      <div class="row">
+        <label class="track-title"><%= track.title%></label>
+      </div>
+      <div class="row">
+        <label class="track-genre"><%= track.genre%></label>
+      </div>
+    </div>
+    <%= audio_tag url_for(track.track_file), controls: true, preload: "none" %>
+  </div>
+<% end %>

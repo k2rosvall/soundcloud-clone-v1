@@ -8,6 +8,9 @@
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
+            <%= link_to 'Upload', new_track_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
             <%= link_to 'Profile', profile_path(current_user.profile_id), class: 'nav-link' %>
           </li>
           <li class="nav-item">

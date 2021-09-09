@@ -6,6 +6,6 @@ one:
   description: 'a pop song'
 
 two:
-  title: 
-  genre: 
-  description: MyText
+  title: 'My other song'
+  genre: 'Rock'
+  description: 'a rock song'

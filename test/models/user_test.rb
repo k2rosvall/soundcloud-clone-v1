@@ -40,4 +40,15 @@ class UserTest < ActiveSupport::TestCase
     refute user.valid?
     assert_equal user.errors.messages[:bio].first, 'is too long (maximum is 255 characters)'
   end
+
+  test 'should follow and unfollow a user' do
+    jane = users(:one)
+    john = users(:two)
+    assert_not jane.following?(john)
+    jane.follow(john)
+    assert jane.following?(john)
+    assert john.followers.include?(jane)
+    jane.unfollow(john)
+    assert_not jane.following?(john)
+  end
 end

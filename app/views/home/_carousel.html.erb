@@ -5,7 +5,7 @@
         <div class="image-container">
           <%= image_tag track.cover_image, class: 'gallery-image' %>
           <div class="play">
-          <%= link_to('#2') do %>
+          <%= link_to(track_path(track.id)) do %>
             <%= image_tag 'play.png', class:'play'%>
           <% end %>
           </div>

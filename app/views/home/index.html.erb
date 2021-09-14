@@ -1,25 +1,20 @@
-<% unless @latest_tracks == []%>
-  <h1>The upload</h1>
-  <p>Newly posted tracks. Just for you</p>
-  <%= render 'home/carousel', tracks: @latest_tracks%>
+<% unless @latest_tracks.empty?%>
+  <div class="category">
+    <%= render 'home/category_header', locals: {title: 'New Releases', description: 'Newly posted tracks. Just for you'}%>
+    <%= render 'home/carousel', tracks: @latest_tracks%>
+  </div>
 <% end %>
-<% unless @pop_tracks == []%>
-  <h1>Pop</h1>
-  <p>Popular songs from the community</p>
-  <%= render 'home/carousel', tracks: @pop_tracks%>
+
+
+<% HomeHelper::GENRES.each do | genre |%>
+  <% @tracks = tracks_per_genre(genre) %>
+  <% unless @tracks.empty?%>
+    <div class="category">
+      <%= render 'home/category_header', locals: {title: genre}%>
+      <%= render 'home/carousel', tracks: @tracks%>
+    </div>
+  <% end %>
 <% end %>
-<% unless @rock_tracks == []%>
-  <h1>Rock</h1>
-  <p>Popular songs from the community</p>
-  <%= render 'home/carousel', tracks: @rock_tracks%>
-<% end %>
-<% unless @edm_tracks  == []%>
-  <h1>Dance & EDM</h1>
-  <p>Popular songs from the community</p>
-  <%= render 'home/carousel', tracks: @edm_tracks%>
-<% end %>
-<% unless @rap_tracks == []%>
-  <h1>Hip-Hop & Rap</h1>
-  <p>Popular songs from the community</p>
-  <%= render 'home/carousel', tracks: @rap_tracks%>
-<% end %>
+
+
+

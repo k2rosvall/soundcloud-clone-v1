@@ -1,6 +1,5 @@
 <div class="gallery js-flickity">
   <% tracks.each do |track|%>
-    <% unless track.nil? %>
       <div class="gallery-cell">
         <div class="image-container">
           <%= image_tag track.cover_image, class: 'gallery-image' %>
@@ -20,6 +19,5 @@
           <%= track.user.display_name %>
         <% end %>
       </div>
-    <% end %>
   <% end %>
 </div>

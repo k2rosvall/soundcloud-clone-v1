@@ -8,6 +8,11 @@ class TracksController < ApplicationController
     @track = Track.new
   end
 
+  # GET /tracks/1
+  def show
+    @track = Track.find_by(id: params[:id])
+  end
+
   # GET /tracks/1/edit
   def edit; end
 

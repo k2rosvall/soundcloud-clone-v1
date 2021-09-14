@@ -1,2 +1,20 @@
-<h1>Welcome!</h1>
-<p>Discover new music!</p>
+<% unless @latest_tracks.empty?%>
+  <div class="category">
+    <%= render 'home/category_header', locals: {title: 'New Releases', description: 'Newly posted tracks. Just for you'}%>
+    <%= render 'home/carousel', tracks: @latest_tracks%>
+  </div>
+<% end %>
+
+
+<% HomeHelper::GENRES.each do | genre |%>
+  <% @tracks = tracks_per_genre(genre) %>
+  <% unless @tracks.empty?%>
+    <div class="category">
+      <%= render 'home/category_header', locals: {title: genre}%>
+      <%= render 'home/carousel', tracks: @tracks%>
+    </div>
+  <% end %>
+<% end %>
+
+
+

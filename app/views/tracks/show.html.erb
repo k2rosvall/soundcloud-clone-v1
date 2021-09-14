@@ -1,4 +1,48 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_track_path(@track) %> |
-<%= link_to 'Back', tracks_path %>
+<div class="row tracklist-item">
+  <div class="col">
+    <%= image_tag @track.cover_image, class: 'detail-cover-image' %>
+  </div>
+  <div class="col">
+    <div class="row">
+      <% if @track.user.display_name.nil? || @track.user.display_name == ""%>
+        <label class="track-artist"><%= "#{@track.user.first_name} #{@track.user.last_name}"%></label>
+      <% else %>
+        <label class="track-artist"><%= @track.user.display_name%></label>
+      <% end %>
+    </div>
+    <div class="row">
+      <label class="track-title"><%= @track.title%></label>
+    </div>
+    <div class="row">
+      <label class="track-genre"><%= @track.genre%></label>
+    </div>
+  </div>
+  <%= audio_tag url_for(@track.track_file), controls: true, preload: "none" %>
+</div>
+<div class="row">
+  <div class="col">
+    <% if @track.user.avatar.attached? %>
+      <%= image_tag @track.user.avatar, class: 'profile-photo' %>
+    <% else %>
+      <%= image_tag "pfp.jpg", class: "profile-photo" %>
+    <% end %>
+  </div>
+  <% if @track.user.display_name.nil? || @track.user.display_name == "" %>
+    <%= link_to "#{@track.user.first_name} #{@track.user.last_name}", profile_path(@track.user.profile_id) %>
+  <% else %>
+    <%= link_to "#{@track.user.display_name}", profile_path(@track.user.profile_id) %>
+  <% end %>
+  <div class="row">
+    <div class="col">
+      <label>Followers</label><br>
+      <%= @track.user.followers_count%>
+    </div>
+    <div class="col">
+      <label>Tracks</label><br>
+      <%= @track.user.tracks_count%>
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+</div>

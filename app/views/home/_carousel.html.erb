@@ -2,7 +2,17 @@
   <% tracks.each do |track|%>
     <% unless track.nil? %>
       <div class="gallery-cell">
-        <%= image_tag track.cover_image, class: 'gallery-image' %>
+        <div class="image-container">
+          <%= image_tag track.cover_image, class: 'gallery-image' %>
+          <div class="play">
+          <%= link_to('#2') do %>
+            <%= image_tag 'play.png', class:'play'%>
+          <% end %>
+          </div>
+          <div class="like">
+            <%= image_tag 'heart.png', class:'like'%>
+          </div>
+        </div>
         <label class="track-title"><%= track.title%></label>
         <% if track.user.display_name.nil? || track.user.display_name == ""%>
           <%= "#{track.user.first_name} #{track.user.last_name}" %>

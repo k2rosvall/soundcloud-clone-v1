@@ -52,3 +52,33 @@
   height: 150px;
   width: 150px;
 }
+
+.image-container:hover .play { 
+  display: block;
+}
+
+.play{
+  position : absolute;
+  display:none;
+  top: 21%; 
+  width: 60px;
+  margin: 0 auto; 
+  left: 0px;
+  right: 0px;
+  z-index: 100
+}
+
+.image-container:hover .like {
+  display: block;
+}
+
+.like {
+  position: absolute;
+  display: none;
+  top: 60%;
+  width: 25px;
+  margin: 0 auto; 
+  left: 30px;
+  right: 0px;
+  z-index: 100
+}

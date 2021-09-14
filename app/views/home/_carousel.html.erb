@@ -13,7 +13,7 @@
             <%= image_tag 'heart.png', class:'like'%>
           </div>
         </div>
-        <label class="track-title"><%= track.title%></label>
+        <label class="carousel-track-title"><%= track.title%></label><br>
         <% if track.user.display_name.nil? || track.user.display_name == ""%>
           <%= "#{track.user.first_name} #{track.user.last_name}" %>
         <% else %>

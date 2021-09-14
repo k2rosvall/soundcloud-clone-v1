@@ -1,6 +1,10 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  background: rgb(240, 240, 240)
+}
+
 .navbar {
   background-color: #333333;
   color: white;
@@ -24,7 +28,7 @@
 }
 
 .gallery {
-  background: white;
+  background: rgb(230, 230, 230);
 }
 
 .gallery-cell {

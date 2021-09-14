@@ -1,6 +1,10 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  background: rgb(240, 240, 240)
+}
+
 .navbar {
   background-color: #333333;
   color: white;
@@ -12,4 +16,77 @@
 
 .navbar-light .navbar-nav .nav-link {
   color: white
+}
+
+.track-container:hover {
+  background: gray;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.gallery {
+  background: rgb(230, 230, 230);
+}
+
+.gallery-cell {
+  width: 20%;
+  height: 200px;
+  margin-right: 10px;
+  counter-increment: gallery-cell;
+  text-align: center;
+}
+
+.gallery-cell.is-selected {
+  border-bottom: #ef5330 2px solid;
+}
+
+/* cell number */
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+.gallery-image {
+  height: 150px;
+  width: 150px;
+}
+
+.image-container:hover .play { 
+  display: block;
+}
+
+.play{
+  position : absolute;
+  display:none;
+  top: 21%; 
+  width: 60px;
+  margin: 0 auto; 
+  left: 0px;
+  right: 0px;
+  z-index: 100
+}
+
+.image-container:hover .like {
+  display: block;
+}
+
+.like {
+  position: absolute;
+  display: none;
+  top: 60%;
+  width: 25px;
+  margin: 0 auto; 
+  left: 30px;
+  right: 0px;
+  z-index: 100
+}
+
+.category {
+  margin-bottom: 50px;
 }

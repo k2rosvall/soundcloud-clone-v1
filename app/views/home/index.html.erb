@@ -1,2 +1,25 @@
-<h1>Welcome!</h1>
-<p>Discover new music!</p>
+<% unless @latest_tracks == []%>
+  <h1>The upload</h1>
+  <p>Newly posted tracks. Just for you</p>
+  <%= render 'home/carousel', tracks: @latest_tracks%>
+<% end %>
+<% unless @pop_tracks == []%>
+  <h1>Pop</h1>
+  <p>Popular songs from the community</p>
+  <%= render 'home/carousel', tracks: @pop_tracks%>
+<% end %>
+<% unless @rock_tracks == []%>
+  <h1>Rock</h1>
+  <p>Popular songs from the community</p>
+  <%= render 'home/carousel', tracks: @rock_tracks%>
+<% end %>
+<% unless @edm_tracks  == []%>
+  <h1>Dance & EDM</h1>
+  <p>Popular songs from the community</p>
+  <%= render 'home/carousel', tracks: @edm_tracks%>
+<% end %>
+<% unless @rap_tracks == []%>
+  <h1>Hip-Hop & Rap</h1>
+  <p>Popular songs from the community</p>
+  <%= render 'home/carousel', tracks: @rap_tracks%>
+<% end %>

@@ -16,6 +16,19 @@
     <div class="row">
       <label class="track-genre"><%= @track.genre%></label>
     </div>
+    <div class="row">
+      <div class="col">
+        <label>Likes</label><br>
+        <%= @track.likes.count%>
+      </div>
+      <% if current_user.nil?%>
+        <%= link_to(new_user_session_path) do %>
+          <%= image_tag 'heart.png', class:'like-button'%>
+        <% end %>
+      <% else %>
+          <%= render 'tracks/like_button', track: @track%>
+      <% end %>
+    </div>
   </div>
   <%= audio_tag url_for(@track.track_file), controls: true, preload: "none" %>
 </div>
@@ -45,4 +58,13 @@
     <div class="col"></div>
     <div class="col"></div>
   </div>
+</div>
+<div class="row">
+  <h4>Comments</h4>
+  <% if current_user.nil?%>
+    <%= render 'comments/guest_user', locals: { user: @track.user } %>
+  <% else %>
+    <%= render 'comments/form', locals: { track: @track }%>
+  <% end %>
+  <%= render @track.comments.reverse%>
 </div>

@@ -16,7 +16,7 @@
       </div>
     </header>
     <div class="row">
-      <div class="col-6">
+      <div class="col-4">
         <br><label>Bio</label><br>
         <%= @user.bio %>
       </div>
@@ -31,6 +31,10 @@
       <div class="col-2">
         <label>Tracks</label><br>
         <%= @user.tracks_count %>
+      </div>
+      <div class="col-2">
+        <label>Likes</label><br>
+        <%= find_likes_per_user(@user.id) %>
       </div>
     </div>
     <div class="tracks">

@@ -1,0 +1,24 @@
+
+<% if comment.user.avatar.attached? %>
+  <% byebug %>
+  <%= image_tag comment.user.avatar, class: 'comment-pfp' %>
+<% else %>
+  <%= image_tag "pfp.jpg", class: 'comment-pfp'  %>
+<% end %>
+
+<% if comment.user.display_name.nil? || comment.user.display_name == '' %>
+  <%= "#{comment.user.first_name} #{comment.user.last_name}" %>
+<% else %>
+  <%= comment.user.display_name %>
+<% end %>
+<% if current_user.nil? || current_user.id != comment.user.id%>
+  <%= comment.created_at.strftime('%B %e at %l:%M %p') %>
+  <p><%= comment.content%></p>
+<% else %>
+  <%= button_to 'Delete', track_comment_path(@track, comment), method: :delete %>
+  <%= comment.created_at.strftime('%B %e at %l:%M %p') %>
+  <p><%= comment.content%></p>
+<% end %>
+<br>
+
+<hr />

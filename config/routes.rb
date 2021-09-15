@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :tracks
+  resources :tracks do
+    resources :likes
+    resources :comments, only: %i[create destroy]
+  end
   devise_for :users, controllers: { registrations: 'registrations' }
   devise_scope :user do
     post 'users/sign_up', to: 'devise/registrations#create'

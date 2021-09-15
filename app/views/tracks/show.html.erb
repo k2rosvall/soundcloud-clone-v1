@@ -59,3 +59,12 @@
     <div class="col"></div>
   </div>
 </div>
+<div class="row">
+  <h4>Comments</h4>
+  <% if current_user.nil?%>
+    <%= render 'comments/guest_user', locals: { user: @track.user } %>
+  <% else %>
+    <%= render 'comments/form', locals: { track: @track }%>
+  <% end %>
+  <%= render @track.comments.reverse%>
+</div>

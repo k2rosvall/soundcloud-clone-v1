@@ -13,5 +13,4 @@ Rails.application.routes.draw do
   get '/:profile_id', to: 'profile#show', as: 'profile'
 
   resources :relationships, only: %i[create destroy]
-
 end

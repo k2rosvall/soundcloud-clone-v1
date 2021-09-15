@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :following, through: :followed_users, source: :followed
   has_many :followers, through: :follower_users, source: :follower
   has_many :likes, dependent: :destroy
+  has_many :comments
 
   validates :first_name, :last_name, presence: true
   validates :profile_id, uniqueness: true, presence: true

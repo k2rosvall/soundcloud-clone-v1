@@ -4,7 +4,9 @@ class Track < ApplicationRecord
   belongs_to :user, counter_cache: true
   has_one_attached :track_file
   has_one_attached :cover_image
+
   has_many :likes, dependent: :destroy
+  has_many :comments
 
   validates :track_file, :cover_image, :title, :genre, presence: true
 

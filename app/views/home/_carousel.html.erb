@@ -14,7 +14,7 @@
                 <%= image_tag 'heart.png', class:'like like-button'%>
               <% end %>
             <% else %>
-              <% prev_like = track.likes.find { |like| like.user_id == current_user.id}%>
+              <% prev_like = track.likes.find_by(user_id: current_user.id)%>
               <% if prev_like %>
                 <%= link_to(track_like_path(track, prev_like), method: :delete) do %>
                   <%= image_tag 'like.png', class:'like like-button'%>

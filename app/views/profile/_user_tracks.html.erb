@@ -12,7 +12,9 @@
         <% end %>
       </div>
       <div class="row">
+      <%= link_to(track_path(track.id)) do %>
         <label class="track-title"><%= track.title%></label>
+      <% end %>
       </div>
       <div class="row">
         <label class="track-genre"><%= track.genre%></label>

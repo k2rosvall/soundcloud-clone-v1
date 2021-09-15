@@ -16,6 +16,8 @@
   <p><%= comment.content%></p>
 <% else %>
   <%= button_to 'Delete', track_comment_path(@track, comment), method: :delete %>
+  <%= comment.created_at.strftime('%B %e at %l:%M %p') %>
+  <p><%= comment.content%></p>
 <% end %>
 <br>
 

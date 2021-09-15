@@ -1,4 +1,4 @@
-<p>follow <%= (locals[:user].display_name) ? locals[:user].display_name : "#{locals[:user].first_name} #{locals[:user].last_name}"%> and others on Souncloud</p>
+<p>Create and account or sign in to comment and follow others on Soundcloud</p>
 <%= link_to 'Create an account', new_user_registration_path, class: 'btn btn-accent' %>
-<%= link_to 'Sign in', new_user_session_path, class: 'btn' %>
+<%= link_to 'Sign in', new_user_session_path, class: 'btn btn-secondary' %>
   

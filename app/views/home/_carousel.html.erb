@@ -4,12 +4,27 @@
         <div class="image-container">
           <%= image_tag track.cover_image, class: 'gallery-image' %>
           <div class="play">
-          <%= link_to(track_path(track.id)) do %>
-            <%= image_tag 'play.png', class:'play'%>
-          <% end %>
+            <%= link_to(track_path(track.id)) do %>
+              <%= image_tag 'play.png', class:'play'%>
+            <% end %>
           </div>
           <div class="like">
-            <%= image_tag 'heart.png', class:'like'%>
+            <% if current_user.nil?%>
+              <%= link_to(new_user_session_path) do %>
+                <%= image_tag 'heart.png', class:'like like-button'%>
+              <% end %>
+            <% else %>
+              <% prev_like = track.likes.find { |like| like.user_id == current_user.id}%>
+              <% if prev_like %>
+                <%= link_to(track_like_path(track, prev_like), method: :delete) do %>
+                  <%= image_tag 'like.png', class:'like like-button'%>
+                <% end %>
+              <% else %>
+                <%= link_to(track_likes_path(track), method: :post) do %>
+                  <%= image_tag 'heart.png', class:'like like-button'%>
+                <% end %>
+              <% end %>
+            <% end %>
           </div>
         </div>
         <label class="carousel-track-title"><%= track.title%></label><br>

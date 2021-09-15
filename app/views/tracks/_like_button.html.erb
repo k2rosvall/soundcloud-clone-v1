@@ -1,0 +1,10 @@
+<% prev_like = @track.likes.find_by(user_id: current_user.id)%>
+<% if prev_like %>
+  <%= link_to(track_like_path(@track, prev_like), method: :delete) do %>
+    <%= image_tag 'like.png', class:'like-button'%>
+  <% end %>
+<% else %>
+  <%= link_to(track_likes_path(@track), method: :post) do %>
+    <%= image_tag 'heart.png', class:'like-button'%>
+  <% end %>
+<% end %>

@@ -48,7 +48,7 @@ class TracksController < ApplicationController
   def destroy
     @track.destroy
     respond_to do |format|
-      format.html { redirect_to tracks_url, notice: 'Track was successfully destroyed.' }
+      format.html { redirect_to profile_path(current_user.profile_id), notice: 'Track was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -63,5 +63,10 @@ class TracksController < ApplicationController
   # Only allow a list of trusted parameters through.
   def track_params
     params.require(:track).permit(:track_file, :cover_image, :title, :genre, :description, :user_id)
+  end
+
+  def valid_content_type?(content_type)
+    accepted_types = ['audio/mp3', 'audio/mpeg', 'audio/wav', 'audio/flac', 'audio/alac', 'audio/aliff']
+    accepted_types.include?(content_type)
   end
 end

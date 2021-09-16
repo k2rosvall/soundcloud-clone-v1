@@ -64,4 +64,9 @@ class TracksController < ApplicationController
   def track_params
     params.require(:track).permit(:track_file, :cover_image, :title, :genre, :description, :user_id)
   end
+
+  def valid_content_type?(content_type)
+    accepted_types = ['audio/mp3', 'audio/mpeg', 'audio/wav', 'audio/flac', 'audio/alac', 'audio/aliff']
+    accepted_types.include?(content_type)
+  end
 end

@@ -19,6 +19,11 @@
       <div class="row">
         <label class="track-genre"><%= track.genre%></label>
       </div>
+      <div class="row">
+        <% if current_user.id == track.user.id%>
+          <%= button_to 'Delete', track_path(track.id), method: :delete %>
+        <% end %>
+      </div>
     </div>
     <%= audio_tag url_for(track.track_file), controls: true, preload: "none" %>
   </div>

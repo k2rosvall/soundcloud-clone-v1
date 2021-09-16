@@ -2,7 +2,6 @@
   <% if track.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(track.errors.count, "error") %> prohibited this track from being saved:</h2>
-
       <ul>
         <% track.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,6 +9,25 @@
       </ul>
     </div>
   <% end %>
+  <button type="button"  class="btn btn-secondary" id="toggle">Show Recording Controls</button>
+
+  <div id="recorder-form" style="display:none">
+    <title>Audio Recording | RecordRTC</title>
+    <h4>Simple Audio Recording using RecordRTC</h4>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <br>
+
+    <button id="btn-start-recording" class="btn btn-danger">Start Recording</button>
+    <button id="btn-stop-recording" class="btn btn-secondary" disabled>Stop Recording</button>
+    <button id="btn-download-recording" class="btn btn-accent" disabled>Load Recording</button>
+
+    <hr>
+    <div><audio controls autoplay playsinline></audio></div>
+
+    <div id="recording-error"></div>
+  </div>
+
   <div class="field form-group w-25">
     <%= f.label 'Drag and drop or click to select your file' %>
     <%= f.file_field :track_file, class:'form-control drag-and-drop'%>
@@ -58,3 +76,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+<%= javascript_pack_tag 'recorder'%>

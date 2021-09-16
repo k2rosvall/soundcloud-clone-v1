@@ -12,5 +12,3 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-import "javascript/recorderOptions"
-require("recorderOptions")

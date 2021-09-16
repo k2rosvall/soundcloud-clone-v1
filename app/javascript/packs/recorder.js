@@ -8,8 +8,6 @@ btn.onclick = function () {
   }
 };
 
-console.log("HOLA")
-
 var audio = document.querySelector('audio');
 
 function captureMicrophone(callback) {
@@ -199,10 +197,6 @@ btnDownloadRecording.onclick = function() {
         inputFile.files = container.files
     }
 };
-
-function getFile() {
-    
-}
 
 function click(el) {
     el.disabled = false; // make sure that element is not disabled

@@ -3,7 +3,85 @@
 
 
 body {
-  background: rgb(248, 248, 248)
+  background: rgb(245, 245, 245)
+}
+
+.navbar {
+  background-color: #333333;
+  color: white;
+}
+
+.track-container:hover {
+  background: gray;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.gallery {
+  background: rgb(230, 230, 230);
+}
+
+.gallery-cell {
+  width: 20%;
+  height: 200px;
+  margin-right: 10px;
+  counter-increment: gallery-cell;
+  text-align: center;
+}
+
+.gallery-cell.is-selected {
+  border-bottom: #ef5330 2px solid;
+}
+
+/* cell number */
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+.gallery-image {
+  height: 150px;
+  width: 150px;
+}
+
+.image-container:hover .play { 
+  display: block;
+}
+
+.play{
+  position : absolute;
+  display:none;
+  top: 21%; 
+  width: 60px;
+  margin: 0 auto; 
+  left: 0px;
+  right: 0px;
+  z-index: 100
+}
+
+.image-container:hover .like {
+  display: block;
+}
+
+.like {
+  position: absolute;
+  display: none;
+  top: 60%;
+  width: 25px;
+  margin: 0 auto; 
+  left: 30px;
+  right: 0px;
+  z-index: 100
+}
+
+.category {
+  margin-bottom: 50px;
 }
 
 .input:focus {
@@ -91,4 +169,62 @@ audio {
 audio::-webkit-media-controls-play-button{
   border-radius: 50%;
   background-color: #ef5330;
+}
+
+.edit-form {
+  margin-top: 20px;
+}
+
+.edit-profile-pic {
+  margin-left: 30px;
+  margin-top:10px;
+}
+
+.field-requiered {
+  color: red;
+}
+
+.bio-field {
+  height: 100px;
+}
+
+.edit-profile-actions {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.edit-profile-actions .button{
+  margin-right: 5px;
+}
+
+.drag-and-drop-input {
+  height: 100px;
+}
+
+
+.select select:focus{
+  border-color: #ef5330;
+  box-shadow: 0 0 0 0.125em rgba(199, 130, 72, .5);
+}
+
+.select.is-orange:after {
+  border-color: #ef5330 !important;
+}
+
+.description-field {
+  height: 100px;
+}
+
+.button[disabled] {
+  color: #4A4A4A;
+
+}
+
+.recorder-container {
+  margin-bottom: 10px;
+}
+
+.btn-create-track {
+  width: 100px;
+  margin-bottom: 5px;
 }

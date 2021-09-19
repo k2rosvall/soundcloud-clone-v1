@@ -46,8 +46,9 @@ body {
 }
 
 .gallery-image {
-  height: 150px;
-  width: 150px;
+  height: 130px;
+  width: 130px;
+  margin-top: 10px;
 }
 
 .image-container:hover .play { 
@@ -84,6 +85,10 @@ body {
   margin-bottom: 50px;
 }
 
+.home-container {
+  margin-top: 40px;
+}
+
 .input:focus {
   border-color: #ef5330;
   box-shadow: 0 0 0 0.125em rgba(199, 130, 72, .5);
@@ -110,6 +115,7 @@ body {
 }
 
 .profile-photo {
+  object-fit: cover;
   margin-left: 5%;
   border-radius: 50%;
   background-color: gray;
@@ -227,4 +233,13 @@ audio::-webkit-media-controls-play-button{
 .btn-create-track {
   width: 100px;
   margin-bottom: 5px;
+}
+
+.like-button {
+  height: 20px;
+  width: 20px;
+}
+
+.gallery {
+  margin-top: 10px;
 }

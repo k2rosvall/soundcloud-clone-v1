@@ -1,70 +1,102 @@
-<div class="row tracklist-item">
-  <div class="col">
-    <%= image_tag @track.cover_image, class: 'detail-cover-image' %>
+<div class="track-header">
+  <div class="columns .is-centered">
+    <div class="column is-8">
+      <div class="name-details">
+        <% if @track.user.display_name.nil? || @track.user.display_name == ""%>
+          <label class="display-name"><%= "#{@track.user.first_name} #{@track.user.last_name}"%></label>
+        <% else %>
+          <label class="display-name"><%= @track.user.display_name%></label>
+        <% end %>
+        <br>
+        <br>
+        <label class="display-name is-size-3"><%= @track.title%></label>
+        <br>
+        <br>
+        <label class="track-genre"><%= @track.genre%></label>
+      </div>
+    </div>
+    <div class="column">
+      <%= image_tag @track.cover_image, class: 'detail-cover-image' %>
+    </div>
   </div>
-  <div class="col">
-    <div class="row">
-      <% if @track.user.display_name.nil? || @track.user.display_name == ""%>
-        <label class="track-artist"><%= "#{@track.user.first_name} #{@track.user.last_name}"%></label>
+  <div class="columns">
+    <div class="column is-8">
+      <div class="details-track-audio">
+        <%= audio_tag url_for(@track.track_file), controls: true, preload: "none" %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="columns details-comments">
+  <div class="column is-one-fifth">
+    <% if @track.user.avatar.attached? %>
+      <%= image_tag @track.user.avatar, class: 'details-profile-photo' %>
+    <% else %>
+      <%= image_tag "pfp.jpg", class: "details-profile-photo" %>
+    <% end %>
+    <br>
+    <div class="label details-profile-name">
+      <% if @track.user.display_name.nil? || @track.user.display_name == "" %>
+        <%= link_to "#{@track.user.first_name} #{@track.user.last_name}", profile_path(@track.user.profile_id) %>
       <% else %>
-        <label class="track-artist"><%= @track.user.display_name%></label>
+        <%= link_to "#{@track.user.display_name}", profile_path(@track.user.profile_id) %>
       <% end %>
     </div>
-    <div class="row">
-      <label class="track-title"><%= @track.title%></label>
+
+    <div class="columns">
+      <div class="column">
+        <i class="fas fa-users"></i><label class="details-stats">Followers</label><br>
+        <%= @track.user.followers_count%>
+      </div>
+      <div class="column">
+        <i class="fas fa-music"></i><label class="details-stats">Tracks</label><br>
+        <%= @track.user.tracks_count%>
+      </div>
     </div>
-    <div class="row">
-      <label class="track-genre"><%= @track.genre%></label>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label>Likes</label><br>
+    
+  
+  
+  </div>
+  <div class="column">
+    <div class="details-likes">
+      <div class="columns">
+        <div class="column is-two-fifths">
+          <% if current_user.nil?%>
+            <%= link_to(new_user_session_path) do %>
+              <%= image_tag 'heart.png', class:'button'%>
+            <% end %>
+          <% else %>
+            <%= render 'tracks/like_button', track: @track%>
+          <% end %>
+        </div>
+        <div class="column">
+                <div class="likes">
+        <i class="fas fa-heart"></i><label>Likes</label><br>
         <%= @track.likes.count%>
       </div>
-      <% if current_user.nil?%>
-        <%= link_to(new_user_session_path) do %>
-          <%= image_tag 'heart.png', class:'like-button'%>
-        <% end %>
-      <% else %>
-          <%= render 'tracks/like_button', track: @track%>
-      <% end %>
+        </div>
+      </div>
+      
+
+
     </div>
-  </div>
-  <%= audio_tag url_for(@track.track_file), controls: true, preload: "none" %>
-</div>
-<div class="row">
-  <div class="col">
-    <% if @track.user.avatar.attached? %>
-      <%= image_tag @track.user.avatar, class: 'profile-photo' %>
-    <% else %>
-      <%= image_tag "pfp.jpg", class: "profile-photo" %>
-    <% end %>
-  </div>
-  <% if @track.user.display_name.nil? || @track.user.display_name == "" %>
-    <%= link_to "#{@track.user.first_name} #{@track.user.last_name}", profile_path(@track.user.profile_id) %>
-  <% else %>
-    <%= link_to "#{@track.user.display_name}", profile_path(@track.user.profile_id) %>
-  <% end %>
-  <div class="row">
-    <div class="col">
-      <label>Followers</label><br>
-      <%= @track.user.followers_count%>
+
+    <div class="columns">
+      <div class="column">
+          <% if current_user.nil?%>
+            <%= render 'comments/guest_user', locals: { user: @track.user } %>
+          <% else %>
+            <%= render 'comments/form', locals: { track: @track }%>
+          <% end %>
+      </div>
     </div>
-    <div class="col">
-      <label>Tracks</label><br>
-      <%= @track.user.tracks_count%>
-    </div>
-    <div class="col"></div>
-    <div class="col"></div>
-    <div class="col"></div>
+    <label class="is-size-4">Comments</label><br>
+    <%= render @track.comments.reverse%>
   </div>
 </div>
-<div class="row">
-  <h4>Comments</h4>
-  <% if current_user.nil?%>
-    <%= render 'comments/guest_user', locals: { user: @track.user } %>
-  <% else %>
-    <%= render 'comments/form', locals: { track: @track }%>
-  <% end %>
-  <%= render @track.comments.reverse%>
-</div>
+
+
+
+      
+      
+      

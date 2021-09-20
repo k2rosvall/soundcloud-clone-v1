@@ -14,11 +14,11 @@
       <%= link_to(track_path(track.id)) do %>
         <label class="track-title is-size-3"><%= track.title%></label>
       <% end %><br>
-      <label class="track-genre"><%= track.genre%></label><br>
+      <label class="track-genre"><%= track.genre%></label>
       <% if current_user.id == track.user.id%>
-           <%= link_to(track_path(track.id), method: :delete) do %>
-              <i class="fas fa-trash-alt button is-size-7"></i>
-          <% end %>
+        <%= link_to(track_path(track.id), method: :delete) do %>
+          <i class="fas fa-trash-alt button is-size-7"></i>
+        <% end %>
        <% end %>
 
     </div>

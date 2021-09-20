@@ -1,24 +1,27 @@
 
-<% if comment.user.avatar.attached? %>
-  <% byebug %>
-  <%= image_tag comment.user.avatar, class: 'comment-pfp' %>
-<% else %>
-  <%= image_tag "pfp.jpg", class: 'comment-pfp'  %>
-<% end %>
-
-<% if comment.user.display_name.nil? || comment.user.display_name == '' %>
-  <%= "#{comment.user.first_name} #{comment.user.last_name}" %>
-<% else %>
-  <%= comment.user.display_name %>
-<% end %>
-<% if current_user.nil? || current_user.id != comment.user.id%>
-  <%= comment.created_at.strftime('%B %e at %l:%M %p') %>
-  <p><%= comment.content%></p>
-<% else %>
-  <%= button_to 'Delete', track_comment_path(@track, comment), method: :delete %>
-  <%= comment.created_at.strftime('%B %e at %l:%M %p') %>
-  <p><%= comment.content%></p>
-<% end %>
-<br>
-
-<hr />
+<div class="comment">
+  <div class="comment-header">
+    <% if comment.user.avatar.attached? %>
+      <%= image_tag comment.user.avatar, class: 'comment-pfp' %>
+    <% else %>
+      <%= image_tag "pfp.jpg", class: 'comment-pfp'  %>
+    <% end %>
+    <% if comment.user.display_name.nil? || comment.user.display_name == '' %>
+      <p class="comment-details"><%= "#{comment.user.first_name} #{comment.user.last_name}" %></p>
+    <% else %>
+      <p class="comment-details"><%= comment.user.display_name %></p>
+    <% end %>
+    <% if current_user.nil? || current_user.id != comment.user.id%>
+      <p class="comment-details"><%= comment.created_at.strftime('%B %e at %l:%M %p') %></p>
+    <% else %>
+      <p class="comment-details date"><%= comment.created_at.strftime('%B %e at %l:%M %p') %></p>
+      <%= link_to(track_comment_path(@track, comment), method: :delete) do %>
+        <i class="fas fa-trash-alt button is-size-7"></i>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="comment-content">
+    <p><%= comment.content%></p>
+  </div>
+  <hr />
+</div>

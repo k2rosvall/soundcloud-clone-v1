@@ -1,30 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-light ">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Soundcloud</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Upload', new_track_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Profile', profile_path(current_user.profile_id), class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-          </li>
+<nav class="navbar is-dark">
+	<div class="navbar-brand">
+		<a href="/">
+      <%= image_tag "logo.png", class: 'logo' %>
+    </a>
+		<div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<div id="navbarExampleTransparentExample" class="navbar-menu">
+		<div class="navbar-end">
+			<% if user_signed_in? %>
+            <%= link_to 'Upload', new_track_path, class: 'navbar-item' %>
+            <%= link_to 'Profile', profile_path(current_user.profile_id), class: 'navbar-item' %>
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'navbar-item' %>
         <% else %>
-          <li class="nav-item">
-            <%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
-          </li>
+            <%= link_to 'Register', new_user_registration_path, class: 'navbar-item' %>
+            <%= link_to 'Sign in', new_user_session_path, class: 'navbar-item' %>
         <% end %>
-      </ul>
-    </div>
-  </div>
+		</div>
+	</div>
 </nav>
+

@@ -1,48 +1,56 @@
-<div class="container">
-    <header class="profile_header">
-      <div class="row">
-        <div class="col-2">
-          <% if @user.avatar.attached? %>
-            <%= image_tag @user.avatar, class: 'profile-photo' %>
-          <% else %>
-            <%= image_tag "pfp.jpg", class: "profile-photo" %>
-          <% end %>
-        </div>
-        <div class="col">
-          <h2><%= @user.display_name%></h2><br>
-          <%= "#{@user.first_name} #{@user.last_name}" %>
-          <%= render 'profile/follow_form' %>
-        </div>
+<header class="profile-header">
+   <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar, class: 'profile-photo' %>
+  <% else %>
+    <%= image_tag "pfp.jpg", class: "profile-photo" %>
+  <% end %>
+  <div class="profile-name">
+    <p class="is-size-3 display-name"><%= @user.display_name%></p>
+    <p class="is-size-6 display-name"><%= "#{@user.first_name} #{@user.last_name}"%></p>
+  </div>
+</header>
+<div class="columns tracks-stats-container">
+  <div class="column is-three-fifths">
+    <h2 class="is-size-3">Tracks</h2>
+      <% if @user.tracks_count.zero? %>
+        <p>This is user hasn't upload any tracks. </p>
+      <% else %>
+        <%= render 'profile/user_tracks', locals: {user: @user}%>
+      <% end %>
+  </div>
+
+  <div class="column">
+    <div class="columns">
+      <div class="column">
+        <i class="fas fa-map-marker-alt"></i><label class="icon-label is-size-5">City</label><br>
+        <%= @user.city %>
       </div>
-    </header>
-    <div class="row">
-      <div class="col-4">
-        <br><label>Bio</label><br>
-        <%= @user.bio %>
-      </div>
-      <div class="col-2">
-        <label>Followers</label><br>
-        <%= @user.followers_count %>
-      </div>
-      <div class="col-2">
-        <label>Following</label><br>
-        <%= @user.following_count %>
-      </div>
-      <div class="col-2">
-        <label>Tracks</label><br>
-        <%= @user.tracks_count %>
-      </div>
-      <div class="col-2">
-        <label>Likes</label><br>
-        <%= find_likes_per_user(@user.id) %>
+      <div class="column">
+        <i class="fas fa-flag"></i><label class="icon-label is-size-5">Country</label> <br>
+        <%= @user.country %>
       </div>
     </div>
-    <div class="tracks">
-      <h2>Tracks</h2>
-      <% if @user.tracks_count.zero? %>
-      <p>This is user hasn't upload any tracks. </p>
-    <% else %>
-      <%= render 'profile/user_tracks', locals: {user: @user}%>
-    <% end %>
+    <div class="bio-container">
+      <label class="is-size-5">Bio</label><br>
+      <%= @user.bio %><br>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <label class="is-size-5">Followers</label><br>
+        <%= @user.followers_count %>
+      </div>
+      <div class="column">
+        <label class="is-size-5">Following</label><br>
+        <%= @user.following_count %>
+      </div>
+      <div class="column">
+        <label class="is-size-5">Tracks</label><br>
+        <%= @user.tracks_count %>
+      </div>
+      <div class="column">
+        <label class="is-size-5">Likes</label><br>
+        <%= find_likes_per_user(@user.id) %>
+      </div>
     </div>
 </div>

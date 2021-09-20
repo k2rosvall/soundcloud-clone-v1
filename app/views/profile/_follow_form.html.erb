@@ -1,6 +1,6 @@
 <% if current_user.nil? %>
   <br>
-  <%= link_to 'Follow',  new_user_session_path, class: "btn btn-accent" %>
+  <%= link_to 'Follow',  new_user_session_path, class: "button is-orange" %>
 <% else %>
   <div id="follow_form">
   <% if current_user.following?(@user) %>

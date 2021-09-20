@@ -66,3 +66,6 @@ gem 'aws-sdk-s3', require: false
 
 # Active storage validations
 gem 'active_storage_validations'
+
+# Bulma
+gem 'font-awesome-rails'

@@ -1,4 +1,4 @@
-<div class="gallery js-flickity">
+<div class="gallery js-flickity" data-flickity='{ "cellAlign": "left", "contain": true }'>
   <% tracks.each do |track|%>
       <div class="gallery-cell">
         <div class="image-container">
@@ -29,9 +29,9 @@
         </div>
         <label class="carousel-track-title"><%= track.title%></label><br>
         <% if track.user.display_name.nil? || track.user.display_name == ""%>
-          <%= "#{track.user.first_name} #{track.user.last_name}" %>
+          <label class="label"><%= "#{track.user.first_name} #{track.user.last_name}" %></label>
         <% else %>
-          <%= track.user.display_name %>
+          <label class="label"><%= track.user.display_name %></label>
         <% end %>
       </div>
   <% end %>

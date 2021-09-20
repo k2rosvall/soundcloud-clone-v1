@@ -1,5 +1,8 @@
-<h1>New Track</h1>
+<div class="columns">
+  <div class="column is-6 is-offset-3">
+    <h2 class="is-size-2">New Track</h2>
+    <%= render 'form', track: @track %>
+    <%= link_to 'Back', profile_path(current_user.profile_id), class: 'button is-light btn-create-track' %>
+  </div>
+</div>
 
-<%= render 'form', track: @track %>
-
-<%= link_to 'Back', profile_path(current_user.profile_id) %>
